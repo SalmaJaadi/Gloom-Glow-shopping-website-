@@ -1,0 +1,1305 @@
+/* ===== RESET & BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #fef9fc;
+  color: #3d2c3a;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ===== VARIABLES ===== */
+:root {
+  --pink: #f8b4c8;
+  --pink-light: #fce4ec;
+  --pink-dark: #e8a0b8;
+  --blue: #b5d8f7;
+  --blue-light: #e3f0fa;
+  --purple: #d4b8e0;
+  --yellow: #f8e5b4;
+  --green: #c8e6c9;
+  --orange: #fad6b3;
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.15);
+  --radius: 18px;
+  --transition: 0.3s ease;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+  z-index: 1000;
+  padding: 8px 0;
+  transition: var(--transition);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #3d2c3a;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: -0.3px;
+}
+
+.logo i {
+  font-size: 1.5rem;
+}
+
+/* DESIGN: logo enlarged and displayed inside a perfect circle.
+   Fixed equal width/height + border-radius:50% creates the circle, and
+   object-fit:cover crops the image to fill it with no stretching or
+   distortion (regardless of the source image's original aspect ratio). */
+.logo-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 14px rgba(232, 160, 184, 0.4), 0 0 0 3px var(--pink-light);
+  transition: var(--transition);
+}
+
+.logo:hover .logo-img {
+  transform: scale(1.06);
+  box-shadow: 0 6px 18px rgba(232, 160, 184, 0.5), 0 0 0 3px var(--pink);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 28px;
+  align-items: center;
+}
+
+.nav-links a {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #4a3a47;
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: #d47b9e;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--pink);
+  transition: var(--transition);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.cart-icon a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.1rem;
+}
+
+.cart-icon span {
+  background: var(--pink);
+  color: #fff;
+  border-radius: 50%;
+  padding: 1px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  min-width: 22px;
+  text-align: center;
+}
+
+/* Favorite heart icon in navbar */
+.cart-icon a .fa-heart {
+  color: #d47b9e;
+  transition: var(--transition);
+}
+
+.cart-icon a:hover .fa-heart {
+  color: #e06080;
+  transform: scale(1.1);
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #3d2c3a;
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 24px 60px;
+  background: linear-gradient(145deg, #fce4ec 0%, #e3f0fa 40%, #f8e5b4 80%, #fad6b3 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 780px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  padding: 50px 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #2d1f2a;
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+}
+
+.hero-sub {
+  font-size: 1.2rem;
+  color: #4a3a47;
+  margin-bottom: 32px;
+  font-weight: 400;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 14px 34px;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #f8b4c8, #e8a0b8);
+  color: #fff;
+}
+
+.btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn.secondary {
+  background: rgba(255, 255, 255, 0.7);
+  color: #3d2c3a;
+  backdrop-filter: blur(4px);
+}
+
+.btn.secondary:hover {
+  background: #fff;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ===== SECTIONS ===== */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 70px 24px;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2d1f2a;
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: -0.3px;
+}
+
+.section-icon {
+  color: var(--pink-dark);
+  margin-right: 10px;
+  font-size: 0.9em;
+  vertical-align: middle;
+}
+
+/* ===== CATEGORIES ===== */
+/* FIX: replaced "repeat(auto-fit, minmax(180px, 1fr))" with a fixed 3-column
+   grid. auto-fit packs as many 180px+ columns as fit the row, which is why
+   the layout was inconsistently showing 4+2 or 5+1 depending on viewport
+   width. A fixed repeat(3, 1fr) guarantees exactly 3 categories per row,
+   2 even rows for 6 categories, equal gaps, and perfect centering. */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.category-card {
+  background: #fff;
+  padding: 32px 20px;
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--pink-light), var(--blue-light));
+  opacity: 0;
+  transition: var(--transition);
+  border-radius: var(--radius);
+}
+
+.category-card:hover::before {
+  opacity: 1;
+}
+
+.category-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.category-card i {
+  font-size: 3.4rem;
+  color: var(--pink-dark);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.category-card h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2d1f2a;
+  margin-bottom: 4px;
+}
+
+.category-card p {
+  font-size: 0.8rem;
+  color: #7a6a77;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.category-card .cat-tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--pink);
+  color: #fff;
+  font-size: 0.65rem;
+  padding: 2px 10px;
+  border-radius: 50px;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ===== SHOP CONTROLS ===== */
+.shop-controls {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.search-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+  max-width: 400px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #b5a5b0;
+}
+
+.shop-controls input,
+.shop-controls select {
+  padding: 12px 20px;
+  border: 2px solid #f0e4ec;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  background: #fff;
+  transition: var(--transition);
+  outline: none;
+  min-width: 200px;
+}
+
+.search-wrapper input {
+  padding-left: 44px;
+  width: 100%;
+  min-width: unset;
+}
+
+.shop-controls input:focus,
+.shop-controls select:focus {
+  border-color: var(--pink);
+  box-shadow: 0 0 0 4px rgba(248, 180, 200, 0.2);
+}
+
+/* ===== PRODUCT GRID ===== */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 28px;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 18px 18px 20px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+.product-img {
+  height: 160px;
+  background: linear-gradient(135deg, #fce4ec, #e3f0fa);
+  border-radius: 12px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: #b5a0b0;
+  overflow: hidden;
+}
+
+.product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+}
+
+.product-name {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #2d1f2a;
+}
+
+.product-category {
+  font-size: 0.8rem;
+  color: #9a8a97;
+  margin: 2px 0 6px;
+}
+
+.product-price {
+  font-weight: 700;
+  color: #d47b9e;
+  font-size: 1.1rem;
+  margin: 4px 0;
+}
+
+.product-rating {
+  color: #f8c86a;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+.product-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  align-items: stretch;
+}
+
+/* DESIGN: enlarged base size for product action buttons (Add to Cart +
+   heart) — taller with more padding for better usability/tap targets,
+   while keeping the pill shape. */
+.product-actions button {
+  padding: 13px 16px;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.84rem;
+  cursor: pointer;
+  transition: var(--transition);
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.add-btn {
+  flex: 1;
+  min-width: 0;
+}
+
+.add-btn span,
+.add-btn i {
+  white-space: nowrap;
+}
+
+.add-btn-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* DESIGN: Add to Cart — smoother lift+glow hover animation instead of
+   the previous plain scale, staying consistent with the pastel palette. */
+.add-btn {
+  background: var(--pink);
+  color: #fff;
+}
+
+.add-btn:hover {
+  background: var(--pink-dark);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-hover);
+}
+
+.fav-btn {
+  background: #f5eaf0;
+  color: #d47b9e;
+  font-size: 1.05rem;
+  width: 48px;
+  flex: 0 0 48px;
+  padding: 0;
+}
+
+.fav-btn:hover {
+  background: #fce4ec;
+  transform: scale(1.1);
+}
+
+.fav-btn.active {
+  color: #e06080;
+  background: #fce4ec;
+}
+
+/* ===== GLOW CORNER ===== */
+.glow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.glow-card {
+  background: #fff;
+  padding: 24px 18px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.glow-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.glow-card i {
+  font-size: 2rem;
+  color: var(--purple);
+  margin-bottom: 10px;
+}
+
+.glow-card h4 {
+  font-weight: 600;
+  color: #2d1f2a;
+  margin-bottom: 6px;
+}
+
+.glow-card p {
+  font-size: 0.9rem;
+  color: #6a5a67;
+}
+
+/* ===== GIRL OF THE MONTH ===== */
+.girl-card {
+  background: linear-gradient(145deg, #fce4ec, #e3f0fa);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  display: flex;
+  gap: 36px;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: var(--shadow);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.girl-avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.girl-info {
+  flex: 1;
+}
+
+.girl-info h3 {
+  font-size: 1.6rem;
+  color: #2d1f2a;
+}
+
+.girl-info .role {
+  font-weight: 500;
+  color: #d47b9e;
+  margin: 4px 0 8px;
+}
+
+.girl-info .quote {
+  font-style: italic;
+  color: #5a4a57;
+  border-left: 4px solid var(--pink);
+  padding-left: 16px;
+  margin-top: 12px;
+}
+
+/* ===== ABOUT ===== */
+.about-text {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #4a3a47;
+  background: #fff;
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* ===== CONTACT ===== */
+.contact-form {
+  max-width: 520px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 36px 32px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 14px 18px;
+  border: 2px solid #f0e4ec;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: var(--transition);
+  outline: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--pink);
+  box-shadow: 0 0 0 4px rgba(248, 180, 200, 0.15);
+}
+
+.contact-form .btn {
+  align-self: center;
+  min-width: 160px;
+}
+
+.form-feedback {
+  text-align: center;
+  font-weight: 500;
+  color: #4a7a5a;
+  min-height: 24px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: #f5eaf0;
+  padding: 50px 24px 20px;
+  margin-top: 40px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+}
+
+.footer-col h4 {
+  font-size: 1.1rem;
+  margin-bottom: 14px;
+  color: #2d1f2a;
+}
+
+.footer-col p,
+.footer-col a {
+  color: #5a4a57;
+  font-size: 0.95rem;
+  display: block;
+  margin-bottom: 6px;
+  transition: var(--transition);
+}
+
+.footer-col a:hover {
+  color: #d47b9e;
+}
+
+.social-icons {
+  display: flex;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  font-size: 1.4rem;
+  color: #5a4a57;
+  transition: var(--transition);
+}
+
+.social-icons a:hover {
+  color: #d47b9e;
+  transform: scale(1.1);
+}
+
+.newsletter {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.newsletter input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 2px solid #e8dce4;
+  border-radius: 50px;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+.newsletter button {
+  background: var(--pink);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.newsletter button:hover {
+  background: #e8a0b8;
+  transform: scale(1.05);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #e8dce4;
+  color: #7a6a77;
+  font-size: 0.9rem;
+}
+
+/* ===== CART OVERLAY ===== */
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-overlay.open {
+  display: flex;
+}
+
+.cart-panel {
+  background: #fff;
+  max-width: 440px;
+  width: 90%;
+  padding: 32px 28px;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cart-header h3 {
+  font-size: 1.5rem;
+  color: #2d1f2a;
+  display: flex;
+  align-items: center;
+}
+
+.cart-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #9a8a97;
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.cart-close-btn:hover {
+  color: #e06080;
+  transform: rotate(90deg);
+}
+
+/* ===== FAVORITES PANEL — DESIGN IMPROVEMENTS ===== */
+/* Center the "Your favorites" title and give it clean, elegant spacing.
+   Scoped to .fav-header only, so the Cart panel's header (title + close
+   button side by side) is left completely untouched. */
+.fav-header {
+  position: relative;
+  justify-content: center;
+  padding-top: 6px;
+  padding-bottom: 18px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid #f5e8f0;
+}
+
+.fav-header h3 {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+/* Keep the close (✕) button pinned to the top-right corner instead of
+   sitting inline next to the now-centered title */
+.fav-header .cart-close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* "Continue Shopping" button: soft pastel pink, white text, rounded,
+   centered in the panel, with a subtle lift-and-glow hover effect. */
+.fav-continue-btn {
+  display: flex;
+  margin: 22px auto 0;
+  width: 100%;
+  max-width: 260px;
+  background: var(--pink);
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.fav-continue-btn:hover {
+  background: var(--pink-dark);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* DESIGN: "Add to Cart" button inside the Favorites list row. Previously
+   this only inherited bare .add-btn color rules (no padding/radius of its
+   own), so it rendered as a plain rectangular button. Now it gets its own
+   pill shape, larger size, generous padding, and a smooth hover lift to
+   match the site's pastel/girly aesthetic. */
+.fav-add-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px 22px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.fav-add-btn:hover {
+  background: var(--pink-dark);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: var(--shadow-hover);
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0e4ec;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-name {
+  font-weight: 500;
+}
+
+.cart-item-price {
+  font-weight: 600;
+  color: #d47b9e;
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.qty-btn {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  min-height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: var(--pink-light);
+  color: #d47b9e;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+}
+
+.qty-btn:hover {
+  background: var(--pink);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.qty-value {
+  min-width: 20px;
+  text-align: center;
+  font-weight: 600;
+  color: #4a3a47;
+}
+
+.cart-item-remove {
+  background: none;
+  border: none;
+  color: #b08a9a;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 4px 8px;
+}
+
+.cart-item-remove:hover {
+  color: #e06080;
+  transform: scale(1.2);
+}
+
+.cart-total {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: right;
+  margin: 16px 0 20px;
+  color: #2d1f2a;
+}
+
+.checkout-btn {
+  width: 100%;
+  margin-bottom: 12px;
+  justify-content: center;
+}
+
+#closeCartBtn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 50px;
+  background: #f0e4ec;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#closeCartBtn:hover {
+  background: #e8dce4;
+}
+
+/* ===== TOAST NOTIFICATIONS ===== */
+#toastContainer {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast {
+  background: #fff;
+  padding: 12px 28px;
+  border-radius: 50px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  font-weight: 600;
+  border: 2px solid var(--pink);
+  color: #4a7a5a;
+  animation: slideUp 0.3s ease;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toast i {
+  font-size: 1.1rem;
+}
+
+.toast-success {
+  border-color: #4a7a5a;
+  color: #4a7a5a;
+}
+
+.toast-error {
+  border-color: #e06080;
+  color: #e06080;
+}
+
+.toast.fade-out {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* ===== EMPTY STATE STYLING ===== */
+.no-products {
+  text-align: center;
+  padding: 60px 20px;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  grid-column: 1 / -1;
+}
+
+.no-products i {
+  margin-bottom: 16px;
+}
+
+.no-products h3 {
+  color: #2d1f2a;
+  margin-bottom: 8px;
+}
+
+.no-products p {
+  color: #9a8a97;
+}
+
+/* ===== STOCK BADGE ===== */
+.stock-badge {
+  display: inline-block;
+  background: #e06080;
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 2px 10px;
+  border-radius: 50px;
+  margin-top: 4px;
+  font-weight: 600;
+  align-self: flex-start;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .hero h1 {
+    font-size: 2.6rem;
+  }
+
+  /* FIX: on tablets, drop categories to a 2-column grid (3 rows of 2)
+     so cards don't get too narrow/cramped before the 768px breakpoint
+     switches to the mobile layout. Still always perfectly aligned. */
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .qty-btn {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    min-height: 34px;
+    font-size: 1.1rem;
+  }
+
+  .logo-img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 78px;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.98);
+    flex-direction: column;
+    padding: 24px;
+    gap: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    display: none;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .hero {
+    min-height: 70vh;
+    padding: 80px 16px 40px;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+  }
+
+  .section {
+    padding: 40px 16px;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .girl-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 28px 20px;
+  }
+
+  .girl-avatar {
+    width: 110px;
+    height: 110px;
+    font-size: 3rem;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .search-wrapper {
+    min-width: 160px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .product-card {
+    padding: 12px;
+  }
+
+  .product-img {
+    height: 120px;
+    font-size: 2.2rem;
+  }
+
+  .btn {
+    padding: 10px 24px;
+    font-size: 0.9rem;
+  }
+
+  .shop-controls input,
+  .shop-controls select {
+    min-width: 140px;
+    font-size: 0.85rem;
+    padding: 10px 14px;
+  }
+
+  .cart-panel {
+    padding: 24px 18px;
+  }
+
+  .category-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .category-card {
+    padding: 20px 12px;
+    min-height: 150px;
+  }
+
+  .category-card i {
+    font-size: 2.4rem;
+  }
+
+  .category-card h4 {
+    font-size: 0.95rem;
+  }
+}
